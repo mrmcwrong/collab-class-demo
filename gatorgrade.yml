@@ -1,0 +1,54 @@
+# BASE DIR
+- ./:
+  - models.py:
+    - description: Repo includes file models.py
+      check: ConfirmFileExists
+    - description: Define function called pumpkin in models.py
+      check: MatchFileFragment
+      options:
+        fragment: def pumpkin
+        count: 1
+    - description: Define function called alien in models.py
+      check: MatchFileFragment
+      options:
+        fragment: def alien
+        count: 1
+    - description: pos is first parameter in alien function in models.py
+      check: MatchFileRegex
+      options:
+        regex: def\s+alien\s*\(\s*pos
+        count: 1
+    - description: Use an ellipsoid shape inside your alien function
+      check: MatchFileFragment
+      options:
+        fragment: ellipsoid
+        count: 1
+    - description: Add texture attributes to all three models in models.py
+      check: MatchFileFragment
+      options:
+        fragment: texture
+        count: 3
+    - description: Use jpeg files for textures in all three models in models.py
+      check: MatchFileRegex
+      options:
+        regex: (JPG|jpg|jpeg|JPEG)
+        count: 3
+  - main.py:
+    - description: Repo includes file main.py
+      check: ConfirmFileExists
+    - description: Use else statement to draw pumpkins when mouse clicked below the middle of the screen
+      check: MatchFileFragment
+      options:
+        fragment: else
+        count: 1
+    - description: Remove black_cat function from main.py
+      check: MatchFileFragment
+      options:
+        fragment: black_cat
+        count: 0
+        exact: true
+    - description: Replace black_cat function with alien function in main.py
+      check: MatchFileFragment
+      options:
+        fragment: alien
+        count: 1
