@@ -1,6 +1,6 @@
 from vpython import * #import vpython library
 
-class TeddyBear:
+class Bunny:
     def __init__(self):
         #sphere for face
         f = sphere()
@@ -34,9 +34,21 @@ class TeddyBear:
             ear.pos.z = 0
             ear.color = self.furcolor
             self.ears.append(ear)
+    def blinkEyes(self,f):
+        if f%10 == 0: #check if 10 frames elapsed
+            for eye in self.eyes:
+                if eye.color == self.furcolor:
+                    eye.color = color.black
+                else:
+                    eye.color = self.furcolor
+
+#Brennen's method
+#blink's eyes
 
 
-
-t = TeddyBear()
-
-   
+t = Bunny()
+frames = 0
+while True:
+    rate(10)
+    t.blinkEyes(frames)
+    frames += 1
